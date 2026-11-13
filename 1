@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>КиберЩит — Интернет без опасности</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,sans-serif;
+  background:#080d1b;color:white;
+  overflow-x:hidden;
+}
+header{
+  display:flex;justify-content:space-between;
+  align-items:center;padding:22px 8%;
+  background:#0d1428;border-bottom:1px solid #26365c;
+}
+.logo{font-size:23px;font-weight:bold;color:#42e8ff}
+nav a{color:#cbd5ef;text-decoration:none;margin-left:22px}
+nav a:hover{color:#42e8ff}
+.hero{
+  min-height:540px;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;
+  padding:60px 20px;
+  background:radial-gradient(ellipse at center,#173d67,#080d1b 70%);
+}
+.hero h1{
+  font-size:clamp(42px,8vw,82px);
+  color:#42e8ff;text-shadow:0 0 25px #00cfff;
+}
+.hero p{font-size:19px;color:#cbd5ef;margin:22px 0;max-width:650px;line-height:1.6}
+.btn{
+  display:inline-block;padding:15px 28px;
+  border:0;border-radius:10px;background:#00cfff;
+  color:#06111e;font-weight:bold;font-size:16px;
+  cursor:pointer;text-decoration:none;
+}
+.btn:hover{background:#8af2ff;transform:scale(1.04)}
+section{padding:65px 8%}
+h2{text-align:center;font-size:34px;margin-bottom:35px;color:#42e8ff}
+.about{max-width:850px;margin:auto;text-align:center;line-height:1.8;color:#d5def5}
+.cards{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+.card{
+  background:#111d35;border:1px solid #263e67;
+  padding:25px;border-radius:16px;
+  transition:.25s;cursor:pointer;
+}
+.card:hover{transform:translateY(-7px);border-color:#42e8ff}
+.card .emoji{font-size:42px}
+.card h3{margin:15px 0;color:#42e8ff}
+.card p{color:#c4cfe8;line-height:1.5}
+#quiz{background:#0d1428}
+.quiz-box{
+  max-width:650px;margin:auto;background:#111d35;
+  padding:28px;border-radius:16px;border:1px solid #263e67;
+}
+#question{font-size:20px;margin-bottom:20px}
+.answers{display:grid;gap:12px}
+.answers button{
+  padding:14px;border:1px solid #345078;
+  background:#172744;color:white;border-radius:9px;
+  cursor:pointer;text-align:left;font-size:16px;
+}
+.answers button:hover{background:#21446b}
+#feedback{margin-top:20px;min-height:25px}
+#score{color:#42e8ff;font-weight:bold;margin-top:15px}
+footer{text-align:center;padding:30px;color:#8998b8;background:#060a14}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🛡 КИБЕРЩИТ</div>
+  <nav>
+    <a href="#about">О проекте</a>
+    <a href="#zones">Локации</a>
+    <a href="#quiz">Тест</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>КИБЕРЩИТ</h1>
+  <p>Интернет без опасности начинается с тебя!
+  Изучай цифровой мир, находи угрозы и становись защитником интернета.</p>
+  <a class="btn" href="#zones">Начать обучение</a>
+</div>
+
+<section id="about">
+  <h2>О проекте</h2>
+  <div class="about">
+    «КиберЩит: Интернет без опасности» — образовательный игровой проект
+    в стилистике Roblox для детей 10–14 лет. Его задача — научить
+    распознавать интернет-угрозы, защищать личные данные,
+    создавать надёжные пароли и безопасно общаться в сети.
+  </div>
+</section>
+
+<section id="zones">
+  <h2>Исследуй Кибергород</h2>
+  <div class="cards">
+    <div class="card" onclick="showZone('Парольная','Создавай сложные уникальные пароли. Никому не сообщай их и включай двухфакторную аутентификацию.')">
+      <div class="emoji">🔐</div>
+      <h3>Парольная</h3>
+      <p>Узнай, как создавать надёжные пароли и защищать аккаунты.</p>
+    </div>
+    <div class="card" onclick="showZone('Антифишинг','Не переходи по подозрительным ссылкам. Проверяй адрес сайта и отправителя сообщения.')">
+      <div class="emoji">🎣</div>
+      <h3>Антифишинг</h3>
+      <p>Научись распознавать мошеннические сообщения и ссылки.</p>
+    </div>
+    <div class="card" onclick="showZone('Личные данные','Не публикуй домашний адрес, телефон, пароли и геолокацию в открытом доступе.')">
+      <div class="emoji">👤</div>
+
+
+<h3>Личные данные</h3>
+      <p>Защищай информацию о себе в цифровом пространстве.</p>
+    </div>
+    <div class="card" onclick="showZone('Кибербуллинг','Не отвечай агрессией. Сохрани доказательства, заблокируй обидчика и обратись к взрослому.')">
+      <div class="emoji">🤝</div>
+      <h3>Кибербуллинг</h3>
+      <p>Узнай, как действовать при травле в интернете.</p>
+    </div>
+  </div>
+  <div id="zoneInfo" class="quiz-box" style="display:none;margin-top:25px">
+    <h3 id="zoneTitle" style="color:#42e8ff;margin-bottom:15px"></h3>
+    <p id="zoneText" style="line-height:1.7"></p>
+    <button class="btn" style="margin-top:20px" onclick="closeZone()">Закрыть</button>
+  </div>
+</section>
+
+<section id="quiz">
+  <h2>Проверь свои знания</h2>
+  <div class="quiz-box">
+    <div id="question"></div>
+    <div class="answers" id="answers"></div>
+    <div id="feedback"></div>
+    <div id="score">Очки: 0</div>
+    <button class="btn" id="next" onclick="nextQuestion()" style="display:none;margin-top:20px">Следующий вопрос</button>
+  </div>
+</section>
+
+<footer>
+  🛡 КиберЩит: Интернет без опасности
+
+  Образовательный проект для детей 10–14 лет
+</footer>
+
+<script>
+const questions=[
+ {
+  q:"Какой пароль наиболее надёжный?",
+  a:["12345678","qwerty","Lime!River_92#Fox","password"],
+  correct:2,
+  explain:"Верно! Длинный уникальный пароль со случайными символами надёжнее простых комбинаций."
+ },
+ {
+  q:"Тебе пришло сообщение: «Вы выиграли телефон! Перейдите по ссылке». Что делать?",
+  a:["Сразу перейти","Отправить пароль","Не переходить и проверить отправителя","Переслать друзьям"],
+  correct:2,
+  explain:"Правильно! Неожиданные подарки и подозрительные ссылки могут быть приманкой мошенников."
+ },
+ {
+  q:"Можно ли публиковать домашний адрес в открытом профиле?",
+  a:["Да, всем можно","Нет, это личная информация","Только ночью","Если попросил незнакомец"],
+  correct:1,
+  explain:"Верно! Адрес, телефон и другие личные сведения нельзя открыто распространять."
+ },
+ {
+  q:"Что делать, если тебя оскорбляют в интернете?",
+  a:["Оскорбить в ответ","Удалить аккаунт","Сохранить доказательства, заблокировать и рассказать взрослому","Отправить свои данные"],
+  correct:2,
+  explain:"Отлично! Не вступай в конфликт, сохрани доказательства и попроси помощи."
+ }
+];
+
+let current=0,score=0,answered=false;
+
+function renderQuestion(){
+ const q=questions[current];
+ document.getElementById("question").textContent=
+  `Вопрос ${current+1} из ${questions.length}: ${q.q}`;
+ const box=document.getElementById("answers");
+ box.innerHTML="";
+ q.a.forEach((answer,index)=>{
+  const button=document.createElement("button");
+  button.textContent=answer;
+  button.onclick=()=>checkAnswer(index);
+  box.appendChild(button);
+ });
+ document.getElementById("feedback").textContent="";
+ document.getElementById("next").style.display="none";
+ answered=false;
+}
+
+function checkAnswer(index){
+ if(answered)return;
+ answered=true;
+ const q=questions[current];
+ const buttons=document.querySelectorAll(".answers button");
+ buttons.forEach(b=>b.disabled=true);
+ if(index===q.correct){
+  score+=25;
+  document.getElementById("feedback").textContent="✅ "+q.explain;
+ }else{
+  document.getElementById("feedback").textContent="❌ Не совсем. "+q.explain;
+ }
+ document.getElementById("score").textContent="Очки: "+score;
+ document.getElementById("next").style.display="inline-block";
+}
+
+function nextQuestion(){
+ current++;
+ if(current<questions.length){
+  renderQuestion();
+ }else{
+  document.getElementById("question").textContent=
+   "🎉 Обучение завершено!";
+  document.getElementById("answers").innerHTML="";
+  document.getElementById("feedback").textContent=
+   score===100
+   ?"Ты отлично справился! Ты настоящий Защитник интернета! 🛡"
+   :"Ты набрал "+score+" из 100 очков. Повтори обучение и попробуй ещё раз!";
+  document.getElementById("next").style.display="none";
+ }
+}
+
+function showZone(title,text){
+ document.getElementById("zoneTitle").textContent=title;
+ document.getElementById("zoneText").textContent=text;
+
+
+document.getElementById("zoneInfo").style.display="block";
+ document.getElementById("zoneInfo").scrollIntoView({behavior:"smooth"});
+}
+function closeZone(){
+ document.getElementById("zoneInfo").style.display="none";
+}
+renderQuestion();
+</script>
+</body>
+</html>
